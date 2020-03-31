@@ -55,3 +55,10 @@ FlexSpinner uses 2 color variables:
 - one default textColor, which defines the color of unselected text in the spinner
 
 These variables must be set.
+
+FlexSPinner needs 2 strings defined, in your strings.xml file, as such:
+```
+<string name="list_no_items">No items</string>
+<string name="hint_search">Search</string>
+```
+You may fill in whatever text you need, but the 2 variables must be set.
