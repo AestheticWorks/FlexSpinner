@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/button">
+        <com.laurachelaru.flexspinnerlibrary.FlexSpinnerSingle
+            android:id="@+id/single_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText = "Single spinner"
+            app:highlightColor = "@color/colorPrimary"
+            app:textColor = "@color/colorPrimaryDark"/>
+
+        <com.laurachelaru.flexspinnerlibrary.FlexSpinnerSingleSearch
+            android:id="@+id/single_spinner_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText = "Single spinner search"
+            app:highlightColor = "@color/colorPrimary"
+            app:textColor = "@color/colorPrimaryDark"/>
+
+        <com.laurachelaru.flexspinnerlibrary.FlexSpinnerMultiple
+            android:id="@+id/multiple_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText = "Multiple spinner"
+            app:highlightColor = "@color/colorPrimary"
+            app:textColor = "@color/colorPrimaryDark"/>
+        <com.laurachelaru.flexspinnerlibrary.FlexSpinnerMultipleSearch
+            android:id="@+id/multiple_spinner_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintText = "Multiple spinner search"
+            app:highlightColor = "@color/colorPrimary"
+            app:textColor = "@color/colorPrimaryDark"/>
+
+    </LinearLayout>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show selected items"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
