@@ -143,6 +143,8 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
             items.get(position).setSelected(true);
         }
 
+        listener.onItemSelected(items, position);
+
         adapter.setNewList(items);
         adapter.notifyDataSetChanged();
     }

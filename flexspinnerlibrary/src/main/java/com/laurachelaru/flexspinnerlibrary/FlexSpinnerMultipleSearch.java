@@ -172,6 +172,8 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
 
         updateAllItems(items.get(position), items.get(position).isSelected());
 
+        listener.onItemSelected(items, position);
+
         adapter.setNewList(items);
         adapter.notifyDataSetChanged();
     }

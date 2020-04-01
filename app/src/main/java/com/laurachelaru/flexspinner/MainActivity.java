@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         List<FlexItem> singleSpinnerItemList = new ArrayList<>();
         for (int i = 0; i<30; i++) {
-            singleSpinnerItemList.add(new FlexItem("Item " +String.valueOf(i), i, false));
+            singleSpinnerItemList.add(new FlexItem("Item " +String.valueOf(i), i, i==3));
         }
 
         spinnerSingle.setData(singleSpinnerItemList, new FlexListener() {
