@@ -22,15 +22,17 @@ public class FlexAdapterMultiple extends RecyclerView.Adapter<FlexAdapterMultipl
     private LayoutInflater inflater;
     private static MultipleClickListener multipleClickListener;
     private int highlightColor, textColor;
+    protected float itemPadding;
 
     public FlexAdapterMultiple(Context context, List<FlexItem> list, MultipleClickListener clickListener,
-                               int highlightColor, int textColor) {
+                               int highlightColor, int textColor, float itemPadding) {
         this.fullList = list;
         this.list = fullList;
         this.inflater = LayoutInflater.from(context);
         this.multipleClickListener = clickListener;
         this.highlightColor = highlightColor;
         this.textColor = textColor;
+        this.itemPadding = itemPadding;
     }
 
     public interface MultipleClickListener {
@@ -120,6 +122,7 @@ public class FlexAdapterMultiple extends RecyclerView.Adapter<FlexAdapterMultipl
     @Override
     public void onBindViewHolder(@NonNull FlexAdapterMultiple.ViewHolder holder, int position) {
         holder.item.setText(list.get(position).getText());
+        holder.item.setPadding((int)itemPadding, (int)itemPadding, (int)itemPadding, (int)itemPadding);
         setChecked(holder.item, list.get(position).isSelected());
     }
 

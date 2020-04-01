@@ -4,12 +4,15 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
     protected int highlightColor, textColor;
     protected FlexAdapterMultiple adapter;
     protected static AlertDialog alertDialog;
+    protected float itemPadding;
 
     public FlexSpinnerMultipleSearch(Context context) {
         super(context);
@@ -49,6 +53,9 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
             }
             if (attr == R.styleable.FlexSpinner_textColor) {
                 textColor = array.getColor(R.styleable.FlexSpinner_textColor, ContextCompat.getColor(arg0, R.color.colorPrimaryDark));
+            }
+            if (attr == R.styleable.FlexSpinner_itemPadding) {
+                itemPadding = array.getDimension(R.styleable.FlexSpinner_itemPadding, 0);
             }
         }
         //Log.i(TAG, "spinnerTitle: "+ defaultSpinnerText);
@@ -88,7 +95,7 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
         itemList.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         itemList.setLayoutManager(layoutManager);
-        adapter = new FlexAdapterMultiple(getContext(), allItems, this, highlightColor, textColor);
+        adapter = new FlexAdapterMultiple(getContext(), allItems, this, highlightColor, textColor, itemPadding);
         itemList.setAdapter(adapter);
         DividerItemDecorator itemDecoration =
                 new DividerItemDecorator(ContextCompat.getDrawable(getContext(), R.drawable.divider));

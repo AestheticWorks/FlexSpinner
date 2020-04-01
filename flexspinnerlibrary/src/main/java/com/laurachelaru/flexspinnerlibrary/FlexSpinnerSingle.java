@@ -25,6 +25,7 @@ public class FlexSpinnerSingle extends AppCompatSpinner implements FlexAdapterSi
     protected int highlightColor, textColor;
     protected FlexAdapterSingle adapter;
     protected static AlertDialog alertDialog;
+    protected float itemPadding;
 
     public FlexSpinnerSingle(Context context) {
         super(context);
@@ -45,6 +46,9 @@ public class FlexSpinnerSingle extends AppCompatSpinner implements FlexAdapterSi
             }
             if (attr == R.styleable.FlexSpinner_textColor) {
                 textColor = array.getColor(R.styleable.FlexSpinner_textColor, ContextCompat.getColor(arg0, R.color.colorPrimaryDark));
+            }
+            if (attr == R.styleable.FlexSpinner_itemPadding) {
+                itemPadding = array.getDimension(R.styleable.FlexSpinner_itemPadding, 0);
             }
         }
         //Log.i(TAG, "spinnerTitle: "+ defaultSpinnerText);
@@ -79,7 +83,7 @@ public class FlexSpinnerSingle extends AppCompatSpinner implements FlexAdapterSi
         itemList.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         itemList.setLayoutManager(layoutManager);
-        adapter = new FlexAdapterSingle(getContext(), items, this, highlightColor, textColor);
+        adapter = new FlexAdapterSingle(getContext(), items, this, highlightColor, textColor, itemPadding);
         itemList.setAdapter(adapter);
         DividerItemDecorator itemDecoration =
                 new DividerItemDecorator(ContextCompat.getDrawable(getContext(), R.drawable.divider));

@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:id="@+id/divider"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,6 +27,16 @@
             app:queryHint="@string/hint_search"
             app:iconifiedByDefault="false"
             app:queryBackground="@null"/>
+
+            <!--app:queryBackground="@null"-->
+
+        <View
+            android:layout_below="@id/search"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:paddingTop="10dp"
+            android:visibility="visible"
+            android:background="@color/colorDivider"/>
 
 
         <RelativeLayout

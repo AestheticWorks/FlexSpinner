@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Dimension;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +31,7 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
     protected int highlightColor, textColor;
     protected FlexAdapterMultiple adapter;
     protected static AlertDialog alertDialog;
+    protected float itemPadding;
 
     public FlexSpinnerMultiple(Context context) {
         super(context);
@@ -50,6 +52,9 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
             }
             if (attr == R.styleable.FlexSpinner_textColor) {
                 textColor = array.getColor(R.styleable.FlexSpinner_textColor, ContextCompat.getColor(arg0, R.color.colorPrimaryDark));
+            }
+            if (attr == R.styleable.FlexSpinner_itemPadding) {
+                itemPadding = array.getDimension(R.styleable.FlexSpinner_itemPadding, 0);
             }
         }
         array.recycle();
@@ -108,7 +113,7 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
         itemList.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         itemList.setLayoutManager(layoutManager);
-        adapter = new FlexAdapterMultiple(getContext(), items, this, highlightColor, textColor);
+        adapter = new FlexAdapterMultiple(getContext(), items, this, highlightColor, textColor, itemPadding);
         itemList.setAdapter(adapter);
         DividerItemDecorator itemDecoration =
                 new DividerItemDecorator(ContextCompat.getDrawable(getContext(), R.drawable.divider));

@@ -23,15 +23,17 @@ public class FlexAdapterSingle extends RecyclerView.Adapter<FlexAdapterSingle.Vi
     private LayoutInflater inflater;
     private static SingleClickListener singleClickListener;
     private int highlightColor, textColor;
+    private float itemPadding;
 
     public FlexAdapterSingle(Context context, List<FlexItem> list, SingleClickListener clickListener,
-                             int highlightColor, int textColor) {
+                             int highlightColor, int textColor, float itemPadding) {
         this.fullList = list;
         this.list = fullList;
         this.inflater = LayoutInflater.from(context);
         this.singleClickListener = clickListener;
         this.highlightColor = highlightColor;
         this.textColor = textColor;
+        this.itemPadding = itemPadding;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -84,6 +86,7 @@ public class FlexAdapterSingle extends RecyclerView.Adapter<FlexAdapterSingle.Vi
     @Override
     public void onBindViewHolder(@NonNull final FlexAdapterSingle.ViewHolder holder, final int position) {
         holder.item.setText(list.get(position).getText());
+        holder.item.setPadding((int)itemPadding, (int)itemPadding, (int)itemPadding, (int)itemPadding);
         setChecked(holder.item, list.get(position).isSelected());
     }
 
