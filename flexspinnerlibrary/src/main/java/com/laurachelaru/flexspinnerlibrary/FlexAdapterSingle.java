@@ -27,6 +27,17 @@ public class FlexAdapterSingle extends RecyclerView.Adapter<FlexAdapterSingle.Vi
 
     public FlexAdapterSingle(Context context, List<FlexItem> list, SingleClickListener clickListener,
                              int highlightColor, int textColor, float itemPadding) {
+        int i = 0;
+        for (FlexItem item: list) {
+            if(i > 0) {
+                item.setSelected(false);
+            } else {
+                if (item.isSelected()) {
+                    i++;
+                }
+            }
+        }
+
         this.fullList = list;
         this.list = fullList;
         this.inflater = LayoutInflater.from(context);
@@ -34,6 +45,8 @@ public class FlexAdapterSingle extends RecyclerView.Adapter<FlexAdapterSingle.Vi
         this.highlightColor = highlightColor;
         this.textColor = textColor;
         this.itemPadding = itemPadding;
+
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

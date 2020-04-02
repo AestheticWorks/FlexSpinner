@@ -17,7 +17,8 @@ Layout:
             android:layout_height="wrap_content"
             app:hintText = "Multiple spinner search"
             app:highlightColor = "@color/colorPrimary"
-            app:textColor = "@color/colorPrimaryDark"/>
+            app:textColor = "@color/colorPrimaryDark"
+            app:itemPadding = "15dp"/>
 ```
 
 Binding data to spinner:

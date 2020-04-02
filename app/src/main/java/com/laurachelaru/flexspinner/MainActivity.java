@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         List<FlexItem> singleSpinnerItemList = new ArrayList<>();
         for (int i = 0; i<30; i++) {
-            singleSpinnerItemList.add(new FlexItem("Item " +String.valueOf(i), i, i==3));
+            singleSpinnerItemList.add(new FlexItem("Item " +String.valueOf(i), i, i==3 ));
         }
 
         spinnerSingle.setData(singleSpinnerItemList, new FlexListener() {
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+
         List<FlexItem> multipleSpinnerItemList = new ArrayList<>();
         for (int i = 0; i<30; i++) {
             multipleSpinnerItemList.add(new FlexItem("Item " +String.valueOf(i), i, false));
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+
         List<FlexItem> multipleSpinnerSearchItemList = new ArrayList<>();
         for (int i = 0; i<30; i++) {
             multipleSpinnerSearchItemList.add(new FlexItem("Item " +String.valueOf(i), "item"+String.valueOf(i), false));
@@ -83,6 +85,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, items.get(position).getStringId(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        spinnerMultipleSearch.setSelectStatusByStringId("item25", true);
+        spinnerMultipleSearch.setSelectStatusByStringId("item5", true);
+        spinnerMultipleSearch.setSelectStatusByStringId("item12", true);
 
         button.setOnClickListener(this);
     }

@@ -55,7 +55,7 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
                 textColor = array.getColor(R.styleable.FlexSpinner_textColor, ContextCompat.getColor(arg0, R.color.colorPrimaryDark));
             }
             if (attr == R.styleable.FlexSpinner_itemPadding) {
-                itemPadding = array.getDimension(R.styleable.FlexSpinner_itemPadding, 0);
+                itemPadding = array.getDimension(R.styleable.FlexSpinner_itemPadding, 10);
             }
         }
         //Log.i(TAG, "spinnerTitle: "+ defaultSpinnerText);
@@ -212,5 +212,25 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
         }
 
         return selectedItems;
+    }
+
+    public void setSelectStatusByIntId(Integer intId, boolean select) {
+        for (FlexItem item : items) {
+            if (item.getIntId().equals(intId)) {
+                item.setSelected(select);
+            }
+        }
+
+        onCancel(null);
+    }
+
+    public void setSelectStatusByStringId(String stringId, boolean select) {
+        for (FlexItem item : items) {
+            if (item.getStringId().equals(stringId)) {
+                item.setSelected(select);
+            }
+        }
+
+        onCancel(null);
     }
 }
