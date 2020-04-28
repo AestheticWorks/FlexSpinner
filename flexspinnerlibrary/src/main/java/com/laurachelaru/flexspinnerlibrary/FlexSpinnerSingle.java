@@ -56,16 +56,20 @@ public class FlexSpinnerSingle extends AppCompatSpinner implements FlexAdapterSi
     }
 
     public void setData(List<FlexItem> items, FlexListener listener) {
+
         this.items = items;
         this.listener = listener;
 
+        updatableSpinnerText = defaultSpinnerText;
+
+        /*updatableSpinnerText = defaultSpinnerText;
         for (FlexItem item: items) {
             if (item.isSelected()) {
                 updatableSpinnerText = item.getText();
 
                 break;
             }
-        }
+        }*/
 
         onCancel(null);
     }
@@ -117,6 +121,7 @@ public class FlexSpinnerSingle extends AppCompatSpinner implements FlexAdapterSi
 
     @Override
     public void onCancel(DialogInterface dialogInterface) {
+
 
         for (FlexItem item: items) {
             if (item.isSelected()) {

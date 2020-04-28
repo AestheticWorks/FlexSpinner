@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -60,11 +61,7 @@ public class FlexSpinnerSingleSearch extends AppCompatSpinner implements FlexAda
         this.items = allItems;
         this.listener = listener;
 
-        for (FlexItem item: allItems) {
-            if (item.isSelected()) {
-                updatableSpinnerText = item.getText();
-            }
-        }
+        updatableSpinnerText = defaultSpinnerText;
 
         onCancel(null);
     }
@@ -165,19 +162,23 @@ public class FlexSpinnerSingleSearch extends AppCompatSpinner implements FlexAda
 
     @Override
     public void onCancel(DialogInterface dialogInterface) {
-        if (adapter != null) {
+        /*if (adapter != null) {
             items = adapter.getCurrentList();
             //Toast.makeText(getContext(), String.valueOf(items.size()), Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         for (FlexItem item: items) {
             if (item.isSelected()) {
                 updatableSpinnerText = item.getText();
+               // Log.d("updating text", updatableSpinnerText);
+                break;
             }
         }
 
         ArrayAdapter<String> textAdapter = new ArrayAdapter<String>(getContext(), R.layout.flex_text_item, new String[] {updatableSpinnerText});
         setAdapter(textAdapter);
+
+       // Log.d("updatable text", updatableSpinnerText);
 
         if (adapter != null) {
             adapter.notifyDataSetChanged();

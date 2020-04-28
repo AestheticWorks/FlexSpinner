@@ -85,7 +85,9 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
         this.items = items;
         this.listener = listener;
 
-        for (FlexItem item: items) {
+        updatableSpinnerText = defaultSpinnerText;
+
+        /*for (FlexItem item: items) {
             if (item.isSelected()) {
                 if (updatableSpinnerText.isEmpty()) {
                     updatableSpinnerText = item.getText();
@@ -93,7 +95,7 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
                     updatableSpinnerText = updatableSpinnerText + ", " + item.getText();
                 }
             }
-        }
+        }*/
 
         onCancel(null);
     }

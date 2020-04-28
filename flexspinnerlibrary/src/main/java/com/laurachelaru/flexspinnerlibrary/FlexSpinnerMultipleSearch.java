@@ -67,7 +67,9 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
         this.items = allItems;
         this.listener = listener;
 
-        for (FlexItem item: items) {
+        updatableSpinnerText = defaultSpinnerText;
+
+        /*for (FlexItem item: items) {
             if (item.isSelected()) {
                 if (updatableSpinnerText.isEmpty()) {
                     updatableSpinnerText = item.getText();
@@ -75,7 +77,7 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
                     updatableSpinnerText = updatableSpinnerText + ", " + item.getText();
                 }
             }
-        }
+        }*/
 
         onCancel(null);
     }

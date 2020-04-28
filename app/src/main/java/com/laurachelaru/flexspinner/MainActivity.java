@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinnerMultipleSearch = (FlexSpinnerMultipleSearch) findViewById(R.id.multiple_spinner_search);
         Button button = (Button) findViewById(R.id.button);
 
+
         List<FlexItem> singleSpinnerItemList = new ArrayList<>();
         for (int i = 0; i<30; i++) {
             singleSpinnerItemList.add(new FlexItem("Item " +String.valueOf(i), i, i==3 ));
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemSelected(List<FlexItem> items, int position) {
                 //Toast.makeText(MainActivity.this, items.get(position).getStringId(), Toast.LENGTH_SHORT).show();
-            }
+
+                            }
         });
 
 
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemSelected(List<FlexItem> items, int position) {
                 Toast.makeText(MainActivity.this, String.valueOf(items.get(position).getIntId()), Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, items.get(position).getStringId(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
         spinnerMultipleSearch.setSelectStatusByStringId("item25", true);
         spinnerMultipleSearch.setSelectStatusByStringId("item5", true);
