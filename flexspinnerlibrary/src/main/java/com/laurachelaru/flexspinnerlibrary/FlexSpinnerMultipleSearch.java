@@ -62,6 +62,23 @@ public class FlexSpinnerMultipleSearch extends AppCompatSpinner implements FlexA
         array.recycle();
     }
 
+    public void setHintText(String hintText) {
+        updatableSpinnerText = hintText;
+        defaultSpinnerText = updatableSpinnerText;
+    }
+
+    public void setHighlightColor(int highlightColor) {
+        this.highlightColor = highlightColor;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public void setItemPadding(float itemPadding) {
+        this.itemPadding = itemPadding;
+    }
+
     public void setData(List<FlexItem> items, FlexListener listener) {
         this.allItems = items;
         this.items = allItems;

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.laurachelaru.flexspinnerlibrary.FlexItem;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FlexSpinnerSingleSearch spinnerSingleSearch;
     private FlexSpinnerMultiple spinnerMultiple;
     private FlexSpinnerMultipleSearch spinnerMultipleSearch;
+    private FlexSpinnerMultiple programmaticallyConfiguredSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinnerMultiple = (FlexSpinnerMultiple) findViewById(R.id.multiple_spinner);
         spinnerMultipleSearch = (FlexSpinnerMultipleSearch) findViewById(R.id.multiple_spinner_search);
         Button button = (Button) findViewById(R.id.button);
+        LinearLayout spinnerLayout = (LinearLayout) findViewById(R.id.spinner_layout);
 
 
         List<FlexItem> singleSpinnerItemList = new ArrayList<>();
@@ -95,6 +98,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinnerMultipleSearch.setSelectStatusByStringId("item5", true);
         spinnerMultipleSearch.setSelectStatusByStringId("item12", true);
 
+        programmaticallyConfiguredSpinner = new FlexSpinnerMultiple(this);
+        programmaticallyConfiguredSpinner.setHintText("Programatically configured spinner");
+        programmaticallyConfiguredSpinner.setHighlightColor(this.getResources().getColor(android.R.color.holo_blue_bright));
+        programmaticallyConfiguredSpinner.setTextColor(this.getResources().getColor(android.R.color.holo_green_dark));
+
+        List<FlexItem> pList = new ArrayList<>();
+        for (int i = 0; i<30; i++) {
+            pList.add(new FlexItem("P Item " + String.valueOf(i), i, false));
+        }
+
+        programmaticallyConfiguredSpinner.setData(pList, new FlexListener() {
+            @Override
+            public void onItemSelected(List<FlexItem> items, int position) {
+
+            }
+        });
+
+        spinnerLayout.addView(programmaticallyConfiguredSpinner);
         button.setOnClickListener(this);
     }
 
@@ -106,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String singleSpinnerSearchItems = "Single spinner search: ";
                 String multipleSpinnerItems = "Multiple spinner: ";
                 String multipleSpinnerSearchItems = "Multiple spinner search: ";
+                String pSpinnerItems = "Programatically configured spinner: ";
 
                 if (spinnerSingle.getSelectedItem() != null) {
                     singleSpinnerItems = singleSpinnerItems + spinnerSingle.getSelectedItem().getText();
@@ -157,9 +179,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
 
+                if (!programmaticallyConfiguredSpinner.getSelectedItems().isEmpty()) {
+                    for (FlexItem item: programmaticallyConfiguredSpinner.getSelectedItems()) {
+                        pSpinnerItems = pSpinnerItems + item.getText();
+
+                        if (item.getStringId() != null) {
+                            pSpinnerItems = pSpinnerItems + "-> " + item.getStringId() + " ";
+                        } else {
+                            pSpinnerItems = pSpinnerItems + "-> " + String.valueOf(item.getIntId())+ " ";
+                        }
+                    }
+                }
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.RoundedAlertDialog);
                 builder.setTitle("Selected Items");
-                builder.setMessage(singleSpinnerItems + "\n" + singleSpinnerSearchItems + "\n" + multipleSpinnerItems + "\n" + multipleSpinnerSearchItems);
+                builder.setMessage(singleSpinnerItems + "\n" + singleSpinnerSearchItems + "\n" + multipleSpinnerItems + "\n" + multipleSpinnerSearchItems + "\n" +  pSpinnerItems);
 
                 builder.show();
 

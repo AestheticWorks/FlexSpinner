@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.Dimension;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.content.ContextCompat;
@@ -58,6 +59,23 @@ public class FlexSpinnerMultiple extends AppCompatSpinner
             }
         }
         array.recycle();
+    }
+
+    public void setHintText(String hintText) {
+        updatableSpinnerText = hintText;
+        defaultSpinnerText = updatableSpinnerText;
+    }
+
+    public void setHighlightColor(int highlightColor) {
+        this.highlightColor = highlightColor;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
+    }
+
+    public void setItemPadding(float itemPadding) {
+        this.itemPadding = itemPadding;
     }
 
     @Override
